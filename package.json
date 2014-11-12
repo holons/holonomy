@@ -1,0 +1,32 @@
+{
+  "name": "holonomy",
+  "version": "0.0.0",
+  "main": "SOURCE/holonomy.js",
+  "bin": { "holonomy": "./SOURCE/holonomy.js" },
+  "description": "composes holons",
+  "homepage": "http://not.yet.but.soon",
+  "bugs": "https://github.com/serapath/holonomy/issues",
+  "author": {
+    "name": "Alexander Praetorius",
+    "email": "dev@serapath.de",
+    "url": "github.com/serapath"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serapath/holonomy"
+  },
+  "license": "C0",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "holon",
+    "holonomy",
+    "static",
+    "static site generator",
+    "site",
+    "generator",
+    "scaffolding",
+    "generator"
+  ]
+}
