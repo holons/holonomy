@@ -166,7 +166,13 @@ var
     // @TODO: maybe in order to use "holonomy" go to the "root directory"
     // of the project that contains package.json with "holonomy" attribute
     var settings  = fs.existsSync(projectPath) && require(projectPath);
-    if (settings.holonomy) { version.project = settings.version; }
+    if (settings.holonomy) {
+      version.project = settings.version;
+    } else {
+      var errormessage = 'Project is not a holonomy - ' + projectPath;
+      console.log(errormessage);
+      exit(1);
+    }
     return settings.holonomy;
   })(path.join(process.cwd(), 'package.json'))
   // https://www.npmjs.org/doc/misc/npm-scripts.html - consider adding defaults to package.json in postInstall Hook
@@ -260,7 +266,7 @@ function holonomy (argv) {
     ACTIONS:
     - ...
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-  require('./cli')
+  require('clilib')
     .DESCRIPTION()
     //.alias()  // only for inner commands
     .EXAMPLE()
@@ -320,7 +326,7 @@ function holonomy (argv) {
   // @TODO: make it useful as browserify trasform
   // @TODO: think about usefulness in browser context...
   // @TODO:#T01: use require('fs') to read json directory structure
-
+require('clilib')
   //#T01
   console.log(data.diary.item1);
 

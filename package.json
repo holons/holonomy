@@ -2,7 +2,9 @@
   "name": "holonomy",
   "version": "0.0.0",
   "main": "SOURCE/holonomy.js",
-  "bin": { "holonomy": "./SOURCE/holonomy.js" },
+  "bin": {
+    "holonomy": "./SOURCE/holonomy.js"
+  },
   "description": "composes holons",
   "homepage": "http://not.yet.but.soon",
   "bugs": "https://github.com/serapath/holonomy/issues",
@@ -28,5 +30,13 @@
     "generator",
     "scaffolding",
     "generator"
-  ]
+  ],
+  "dependencies": {
+    "bulk-require": "^0.2.1",
+    "clilib": "0.0.1",
+    "exit": "^0.1.2",
+    "findit": "^2.0.0",
+    "graceful-fs": "^3.0.4",
+    "subarg": "^1.0.0"
+  }
 }
