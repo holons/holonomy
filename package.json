@@ -1,26 +1,57 @@
 {
   "name": "holonomy",
   "version": "0.0.0",
-  "main": "SOURCE/holonomy.js",
-  "bin": {
-    "holonomy": "./SOURCE/holonomy.js"
-  },
   "description": "composes holons",
-  "homepage": "http://not.yet.but.soon",
-  "bugs": "https://github.com/serapath/holonomy/issues",
+  "main": "SOURCE/holonomy.js",
+  "bin": { "holonomy": "./SOURCE/holonomy.js" },
+  "files": ["SOURCE/"],
+  "scripts": {
+    "test": "npm run jshint -s && node SPECIFICATION/index.js | tap-spec",
+    "unit-test": "node SPECIFICATION/index.js | tap-spec",
+    "jshint-pre-commit": "jshint --verbose $(git diff --cached --name-only | grep '\\.js$')",
+    "jshint": "jshint --verbose $(git ls-files | grep '\\.js$')",
+    "cover": "istanbul cover --report none --print detail test/index.js",
+    "view-cover": "istanbul report html && opn ./coverage/index.html",
+    "travis": "npm run cover -s && istanbul report lcov && ((cat coverage/lcov.info | coveralls) || exit 0)"
+  },
+  "pre-commit": [
+    "jshint-pre-commit",
+    "unit-test"
+  ],
+  "dependencies": {
+    "bulk-require": "^0.2.1",
+    "clilib": "0.0.1",
+    "exit": "^0.1.2",
+    "findit": "^2.0.0",
+    "graceful-fs": "^3.0.4",
+    "subarg": "^1.0.0"
+  },
+  "devDependencies": {
+    "tape": "^2.12.3",
+    "jshint": "^2.5.0",
+    "istanbul": "^0.2.7",
+    "tap-spec": "^0.1.8",
+    "pre-commit": "0.0.5",
+    "coveralls": "^2.10.0",
+    "opn": "^0.1.2"
+  },
+  "engine": {
+    "node": ">= 0.8.x"
+  },
+  "homepage": "https://github.com/serapath/holonomy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serapath/holonomy"
+  },
+  "bugs": {
+    "url": "https://github.com/serapath/holonomy/issues",
+    "email": "dev@serapath.de"
+  },
   "author": {
     "name": "Alexander Praetorius",
     "email": "dev@serapath.de",
     "url": "github.com/serapath"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/serapath/holonomy"
-  },
-  "license": "C0",
-  "files": [
-    "lib"
-  ],
   "keywords": [
     "holon",
     "holonomy",
@@ -31,12 +62,10 @@
     "scaffolding",
     "generator"
   ],
-  "dependencies": {
-    "bulk-require": "^0.2.1",
-    "clilib": "0.0.1",
-    "exit": "^0.1.2",
-    "findit": "^2.0.0",
-    "graceful-fs": "^3.0.4",
-    "subarg": "^1.0.0"
-  }
+  "npmgenerate-cjs": "0.2.1",
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://github.com/serapath/holonomy/raw/master/LICENSE"
+  }],
+  "private": false
 }
